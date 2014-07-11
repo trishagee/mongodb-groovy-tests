@@ -1,0 +1,24 @@
+apply plugin: 'groovy'
+apply plugin: 'codenarc'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+dependencies {
+    compile group: "org.mongodb", name: "mongodb-driver", version: "3.0.0-SNAPSHOT", changing: true
+    compile 'org.codehaus.groovy:groovy-all:2.3.4'
+
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+    testCompile 'cglib:cglib-nodep:3.1'
+    testCompile 'org.objenesis:objenesis:2.1'
+    testCompile 'org.skyscreamer:jsonassert:1.2.3'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
